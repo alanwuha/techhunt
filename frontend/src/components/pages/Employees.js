@@ -22,7 +22,7 @@ export class Employees extends Component {
     componentDidMount() {
         this.getEmployees()
 
-        // Param values
+        // Get param values from url and update state
         let values = queryString.parse(this.props.location.search, {arrayFormat: 'comma', parseNumbers: true})
         this.setState({
             params: values
@@ -40,6 +40,7 @@ export class Employees extends Component {
             is_loading: true,
         })
 
+        // Set query params using default values of they don't exist in url else extract values from url
         let query
         if(!this.props.location.search) {
             query = '?' + Object.keys(this.state.params).map(key => key + '=' + this.state.params[key]).join('&')
@@ -50,9 +51,9 @@ export class Employees extends Component {
         } else {
             query = this.props.location.search
         }
-
         query = query.replace('%2B', '+')
 
+        // API call
         axios.get(`http://localhost:8000/users/${query}`)
             .then(res => {
                 this.setState({
@@ -66,6 +67,7 @@ export class Employees extends Component {
         let query = queryString.parse(this.props.location.search, {arrayFormat: 'comma'})
         query[param] = value
 
+        // Replace url with new param values
         this.props.history.replace({
             search: queryString.stringify(query, {arrayFormat: 'comma'})
         })
@@ -74,12 +76,14 @@ export class Employees extends Component {
     sort = (e) => {
         let query = queryString.parse(this.props.location.search, {arrayFormat: 'comma'})
         
+        // Replace sort value in query
         if(query.sort.replace('+', '').replace(' ', '') === e.target.id) {
             query.sort = '-' + e.target.id
         } else {
             query.sort = '+' + e.target.id
         }
 
+        // Replace url with new param values
         this.props.history.replace({
             search: queryString.stringify(query, {arrayFormat: 'comma'})
         })

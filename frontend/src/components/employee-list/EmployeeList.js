@@ -2,8 +2,9 @@ import React from 'react'
 import EmployeeItem from './EmployeeItem'
 
 export default function EmployeeList(props) {
-
     let showLoading
+
+    // Show spinner while waiting for response from API
     if(props.is_loading) {
         showLoading = (
             <div className="d-flex justify-content-center mb-5">
@@ -17,12 +18,8 @@ export default function EmployeeList(props) {
     return (
         <div>
             <p style={pStyle}>{props.employees.length} employees found</p>
-
             <h4 style={h4Style}>Employees</h4>
-
             {showLoading}
-
-
             <ul style={ulStyle} className="d-none d-sm-flex">
                 <li className="flex-fill"></li>
                 <li className="flex-fill">
@@ -39,7 +36,6 @@ export default function EmployeeList(props) {
                 </li>
                 <li className="flex-shrink-1">Action</li>
             </ul>
-
             {
                 props.employees.map(e => {
                     return <EmployeeItem key={e.id} employee={e} />

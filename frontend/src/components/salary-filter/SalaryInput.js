@@ -7,6 +7,7 @@ export class SalaryInput extends Component {
         this.timeout = 0
     }
 
+    // To show search icon for MinimumSalary input
     showSearchIcon() {
         if(this.props.searchIcon) {
             return (
@@ -17,6 +18,7 @@ export class SalaryInput extends Component {
         }
     }
 
+    // Perform filter only after user has stopped typing for some time
     onChange = (e) => {
         const salary = e.target.value
         
