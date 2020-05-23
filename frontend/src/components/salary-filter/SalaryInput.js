@@ -34,7 +34,7 @@ export class SalaryInput extends Component {
             <div className="d-flex" style={divStyle}>
                 {this.showSearchIcon()}
                 <div className="flex" style={titleStyle}>
-                    <div style={minSalaryStyle}>Minimum salary</div>
+                    <div style={salaryStyle}>{this.props.salaryText}</div>
                     <div>Enter amount</div>
                 </div>
                 <div className="flex m-2"><b>$</b></div>
@@ -70,7 +70,7 @@ const titleStyle = {
     minWidth: '120px',
 }
 
-const minSalaryStyle = {
+const salaryStyle = {
     color: '#aaa',
 }
 

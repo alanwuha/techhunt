@@ -5,11 +5,11 @@ export default function SalaryFilter(props) {
     return (
         <div className="d-flex flex-column flex-sm-row" style={divStyle}>
             <div className="flex-fill mb-2">
-                <SalaryInput param="minSalary" searchIcon="true" filter={props.filter} salary={props.params.minSalary} />
+                <SalaryInput param="minSalary" salaryText="Minimum Salary" searchIcon="true" filter={props.filter} salary={props.params.minSalary} />
             </div>
             <div className="flex mx-3 d-none d-sm-flex" style={spanStyle}>-</div>
             <div className="flex-fill">
-                <SalaryInput param="maxSalary" filter={props.filter} salary={props.params.maxSalary} />
+                <SalaryInput param="maxSalary" salaryText="Maximum Salary" filter={props.filter} salary={props.params.maxSalary} />
             </div>
         </div>
     )
