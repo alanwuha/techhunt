@@ -3,7 +3,7 @@ import React from 'react'
 export default function EmployeeItem(props) {
     return (
         <ul style={ulStyle} className="d-flex flex-column flex-sm-row">
-            <li className="flex-fill">
+            <li className="flex-shrink-1 mr-5">
                 <i className="fa fa-image" />
             </li>
             <li className="flex-fill">{props.employee.id}</li>

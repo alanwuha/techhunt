@@ -21,7 +21,7 @@ export default function EmployeeList(props) {
             <h4 style={h4Style}>Employees</h4>
             {showLoading}
             <ul style={ulStyle} className="d-none d-sm-flex">
-                <li className="flex-fill"></li>
+                <li className="flex-shrink-1 mr-5">&nbsp;</li>
                 <li className="flex-fill">
                     <a type="button" id="id" onClick={props.sort}>Id</a>
                 </li>
