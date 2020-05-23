@@ -3,10 +3,10 @@
 FROM python:3.6.9
 
 # Set the working directory to /app
-WORKDIR /app
+WORKDIR /app/backend
 
 # Copy the current directory contents into the container at /app
-ADD . /app
+ADD . /app/backend
 
 # Update pip
 RUN pip install --upgrade pip
@@ -18,7 +18,7 @@ RUN pip install -r requirements.txt
 CMD exec python manage.py collectstatic --no-input
 
 # Set the working directory to /app/mysite
-WORKDIR /app/mysite
+WORKDIR /app/backend/mysite
 
 # Service must listen to $PORT environment variable
 # This default value facilitates local development.
