@@ -4,11 +4,11 @@ import SalaryInput from './SalaryInput'
 export default function SalaryFilter() {
     return (
         <div className="d-flex flex-column flex-sm-row" style={divStyle}>
-            <div className="flex mb-2">
+            <div className="flex-fill mb-2">
                 <SalaryInput search="true" />
             </div>
             <div className="flex mx-3 d-none d-sm-flex" style={spanStyle}>-</div>
-            <div className="flex">
+            <div className="flex-fill">
                 <SalaryInput />
             </div>
         </div>

@@ -15,10 +15,7 @@ function App() {
             <SideNav />
           </div>
           <div className="col">
-          <Route exact path="/employees" component={Employees} />
-          <Router exact path="/">
-            <Redirect to="/employees" />
-          </Router>
+            <Route exact path="/" component={Employees} />
           </div>
         </div>
       </div>

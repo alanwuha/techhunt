@@ -1,19 +1,31 @@
 import React, { Component } from 'react'
 import SalaryFilter from '../salary-filter/SalaryFilter'
 import EmployeeList from '../employee-list/EmployeeList'
+import axios from 'axios'
 
 export class Employees extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            employees: [
-                {id: 'e0001', login: 'alan', name: 'Alan Tan', salary: '10000.00'},
-                {id: 'e0002', login: 'alan', name: 'Alan Tan', salary: '10000.00'},
-                {id: 'e0003', login: 'alan', name: 'Alan Tan', salary: '10000.00'},
-                {id: 'e0004', login: 'alan', name: 'Alan Tan', salary: '10000.00'},
-                {id: 'e0005', login: 'alan', name: 'Alan Tan', salary: '10000.00'},
-            ]
+            employees: []
         }
+    }
+
+    componentDidMount() {
+        this.getEmployees()
+    }
+
+    getEmployees() {
+        this.setState({
+            is_loading: true,
+        })
+        axios.get(`http://localhost:8000/users/${this.props.location.search}`)
+            .then(res => {
+                this.setState({
+                    is_loading: false,
+                    employees: res.data.results
+                })
+            })
     }
 
     render() {

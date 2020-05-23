@@ -19,7 +19,7 @@ export default function SalaryInput(props) {
                 <div>Enter amount</div>
             </div>
             <div className="flex m-2"><b>$</b></div>
-            <div className="flex">
+            <div className="flex-fill">
                 <input type="text" style={inputStyle} />
             </div>
         </div>
