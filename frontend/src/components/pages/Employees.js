@@ -74,6 +74,8 @@ export class Employees extends Component {
     }
 
     sort = (e) => {
+        e.preventDefault()
+
         let query = queryString.parse(this.props.location.search, {arrayFormat: 'comma'})
         
         // Replace sort value in query

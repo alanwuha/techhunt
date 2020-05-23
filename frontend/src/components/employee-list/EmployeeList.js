@@ -23,16 +23,16 @@ export default function EmployeeList(props) {
             <ul style={ulStyle} className="d-none d-sm-flex">
                 <li className="flex-shrink-1 mr-5">&nbsp;</li>
                 <li className="flex-fill">
-                    <a type="button" id="id" onClick={props.sort}>Id</a>
+                    <a href="/" style={btnStyle} type="button" id="id" onClick={props.sort}>Id</a>
                 </li>
                 <li className="flex-fill">
-                    <a type="button" id="name" onClick={props.sort}>Name</a>
+                    <a href="/" style={btnStyle} type="button" id="name" onClick={props.sort}>Name</a>
                 </li>
                 <li className="flex-fill">
-                    <a type="button" id="login" onClick={props.sort}>Login</a>
+                    <a href="/" style={btnStyle} type="button" id="login" onClick={props.sort}>Login</a>
                 </li>
                 <li className="flex-fill">
-                    <a type="button" id="salary" onClick={props.sort}>Salary</a>
+                    <a href="/" style={btnStyle} type="button" id="salary" onClick={props.sort}>Salary</a>
                 </li>
                 <li className="flex-shrink-1">Action</li>
             </ul>
@@ -59,5 +59,12 @@ const h4Style = {
 const ulStyle = {
     listStyle: 'none',
     padding: '0px 20px',
+    fontWeight: '600',
+}
+
+const btnStyle = {
+    background: '0',
+    border: '0',
+    color: '#4c5e7d',
     fontWeight: '600',
 }
