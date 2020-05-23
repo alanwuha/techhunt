@@ -7,7 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 from salary.models import Employee
 from salary.serializers import EmployeeSerializer
 from celery import shared_task
-import csv
 
 @csrf_exempt
 @transaction.atomic
@@ -59,15 +58,40 @@ def employee(request):
         sort = request.query_params['sort'].strip()
 
         # Apply filters
-        employees = employees.filter(salary__gte=minSalary).filter(salary__lte=maxSalary).order_by(sort)[offset:offset+limit]
+        employees = employees.filter(salary__gte=minSalary).filter(salary__lte=maxSalary).order_by(sort)
+
+        # Count of total results
+        count = len(employees)
+        
+        # Slice by offset and limit
+        employees = employees[offset:offset+limit]
+
+        # Next
+        if offset+limit < count:
+            nextOffset = offset + limit
+        else:
+            nextOffset = None
+
+        # Previous
+        if offset > 0:
+            if offset - limit > 0:
+                previousOffset = offset - limit
+            else:
+                previousOffset = 0
+        else:
+            previousOffset = None
 
         # Construct response data
         serializer = EmployeeSerializer(employees, many=True)
         response = {
-            'results': serializer.data
+            'count': count,
+            'next_offset': nextOffset,
+            'previous_offset': previousOffset,
+            'results': serializer.data,
         }
 
         return Response(response)
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
