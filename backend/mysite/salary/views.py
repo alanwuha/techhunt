@@ -37,7 +37,37 @@ def upload(request):
             for id, login, name, salary in rows:
                 e = Employee(id, login, name, salary)
                 e.save()
+
+        return Response(status=status.HTTP_200_OK)
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    return Response(status=status.HTTP_200_OK)
+@api_view(['GET'])
+def employee(request):
+    """
+    List all employees.
+    """
+    try:
+        # Get employees
+        employees = Employee.objects.all()
+
+        # Get query parameters
+        minSalary = float(request.query_params['minSalary'])
+        maxSalary = float(request.query_params['maxSalary'])
+        offset = int(request.query_params['offset'])
+        limit = int(request.query_params['limit'])
+        sort = request.query_params['sort'].strip()
+
+        # Apply filters
+        employees = employees.filter(salary__gte=minSalary).filter(salary__lte=maxSalary).order_by(sort)[offset:offset+limit]
+
+        # Construct response data
+        serializer = EmployeeSerializer(employees, many=True)
+        response = {
+            'results': serializer.data
+        }
+
+        return Response(response)
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
