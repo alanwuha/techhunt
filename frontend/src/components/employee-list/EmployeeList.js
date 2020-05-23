@@ -25,10 +25,18 @@ export default function EmployeeList(props) {
 
             <ul style={ulStyle} className="d-none d-sm-flex">
                 <li className="flex-fill"></li>
-                <li className="flex-fill">Id</li>
-                <li className="flex-fill">Name</li>
-                <li className="flex-fill">Login</li>
-                <li className="flex-fill">Salary</li>
+                <li className="flex-fill">
+                    <a type="button" id="id" onClick={props.sort}>Id</a>
+                </li>
+                <li className="flex-fill">
+                    <a type="button" id="name" onClick={props.sort}>Name</a>
+                </li>
+                <li className="flex-fill">
+                    <a type="button" id="login" onClick={props.sort}>Login</a>
+                </li>
+                <li className="flex-fill">
+                    <a type="button" id="salary" onClick={props.sort}>Salary</a>
+                </li>
                 <li className="flex-shrink-1">Action</li>
             </ul>
 

@@ -24,8 +24,6 @@ export class Employees extends Component {
 
         // Param values
         let values = queryString.parse(this.props.location.search, {arrayFormat: 'comma', parseNumbers: true})
-        console.log(values)
-
         this.setState({
             params: values
         })
@@ -53,6 +51,8 @@ export class Employees extends Component {
             query = this.props.location.search
         }
 
+        query = query.replace('%2B', '+')
+
         axios.get(`http://localhost:8000/users/${query}`)
             .then(res => {
                 this.setState({
@@ -71,11 +71,25 @@ export class Employees extends Component {
         })
     }
 
+    sort = (e) => {
+        let query = queryString.parse(this.props.location.search, {arrayFormat: 'comma'})
+        
+        if(query.sort.replace('+', '').replace(' ', '') === e.target.id) {
+            query.sort = '-' + e.target.id
+        } else {
+            query.sort = '+' + e.target.id
+        }
+
+        this.props.history.replace({
+            search: queryString.stringify(query, {arrayFormat: 'comma'})
+        })
+    }
+
     render() {
         return (
             <div className="container" style={divStyle}>
                 <SalaryFilter filter={this.filter} params={this.state.params} />
-                <EmployeeList employees={this.state.employees} loading={this.state.is_loading} />
+                <EmployeeList employees={this.state.employees} sort={this.sort} loading={this.state.is_loading} />
             </div>
         )
     }
