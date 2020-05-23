@@ -2,9 +2,26 @@ import React from 'react'
 import EmployeeItem from './EmployeeItem'
 
 export default function EmployeeList(props) {
+
+    let showLoading
+    if(props.is_loading) {
+        showLoading = (
+            <div className="d-flex justify-content-center mb-5">
+                <div className="spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div>
+            <p style={pStyle}>{props.employees.length} employees found</p>
+
             <h4 style={h4Style}>Employees</h4>
+
+            {showLoading}
+
 
             <ul style={ulStyle} className="d-none d-sm-flex">
                 <li className="flex-fill"></li>
@@ -22,6 +39,10 @@ export default function EmployeeList(props) {
             }
         </div>
     )
+}
+
+const pStyle = {
+    float: 'right',
 }
 
 const h4Style = {

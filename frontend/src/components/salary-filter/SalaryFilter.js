@@ -1,15 +1,15 @@
 import React from 'react'
 import SalaryInput from './SalaryInput'
 
-export default function SalaryFilter() {
+export default function SalaryFilter(props) {
     return (
         <div className="d-flex flex-column flex-sm-row" style={divStyle}>
             <div className="flex-fill mb-2">
-                <SalaryInput search="true" />
+                <SalaryInput param="minSalary" searchIcon="true" filter={props.filter} salary={props.params.minSalary} />
             </div>
             <div className="flex mx-3 d-none d-sm-flex" style={spanStyle}>-</div>
             <div className="flex-fill">
-                <SalaryInput />
+                <SalaryInput param="maxSalary" filter={props.filter} salary={props.params.maxSalary} />
             </div>
         </div>
     )

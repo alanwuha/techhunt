@@ -1,29 +1,54 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-export default function SalaryInput(props) {
+export class SalaryInput extends Component {
 
-    let searchIcon
-    if(props.search) {
-        searchIcon = (
-            <div className="flex" style={imgStyle}>
-                <i className="fa fa-search" />
+    constructor(props) {
+        super(props)
+        this.timeout = 0
+    }
+
+    showSearchIcon() {
+        if(this.props.searchIcon) {
+            return (
+                <div className="flex" style={imgStyle}>
+                    <i className="fa fa-search" />
+                </div>
+            )
+        }
+    }
+
+    onChange = (e) => {
+        const salary = e.target.value
+        
+        if(this.timeout) {
+            clearTimeout(this.timeout)
+        }
+
+        this.timeout = setTimeout(() => {
+            this.props.filter(this.props.param, salary)
+        }, 300)
+    }
+
+    render() {
+        return (
+            <div className="d-flex" style={divStyle}>
+                {this.showSearchIcon()}
+                <div className="flex" style={titleStyle}>
+                    <div style={minSalaryStyle}>Minimum salary</div>
+                    <div>Enter amount</div>
+                </div>
+                <div className="flex m-2"><b>$</b></div>
+                <div className="flex-fill">
+                    <input 
+                        type="text"
+                        style={inputStyle}
+                        // defaultValue={this.props.salary}
+                        // ref={(input) => this.input = input}
+                        onChange={this.onChange} />
+                </div>
             </div>
         )
     }
-
-    return (
-        <div className="d-flex" style={divStyle}>
-            {searchIcon}
-            <div className="flex" style={titleStyle}>
-                <div style={minSalaryStyle}>Minimum salary</div>
-                <div>Enter amount</div>
-            </div>
-            <div className="flex m-2"><b>$</b></div>
-            <div className="flex-fill">
-                <input type="text" style={inputStyle} />
-            </div>
-        </div>
-    )
 }
 
 const divStyle = {
@@ -55,3 +80,5 @@ const inputStyle = {
     paddingLeft: '20px',
     border: '0',
 }
+
+export default SalaryInput
