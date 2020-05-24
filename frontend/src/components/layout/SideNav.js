@@ -14,6 +14,9 @@ export default function SideNav() {
                     <li className="nav-item">
                         <Link className="nav-link" to="/upload" style={linkStyle}>Upload</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/create" style={linkStyle}>Create</Link>
+                    </li>
                 </ul>
             </div>
         </div>
