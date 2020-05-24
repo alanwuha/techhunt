@@ -107,22 +107,34 @@ export class Employees extends Component {
 
     delete = (e) => {
         e.preventDefault()
+        
+        // Update delete_employee_id
         const id = e.target.id
         this.setState({
             delete_employee_id: e.target.id
         })
+
+        // Show delete modal
         window.$('#deleteModal').modal('show')
     }
 
     deleteEmployee = (e) => {
         e.preventDefault()
-        const id = e.target.id
-        axios.delete(`http://localhost:8000/users/${id}`)
+
+        // Delete API
+        const value = e.target.value
+        axios.delete(`http://localhost:8000/users/${value}`)
             .then(res => {
+                // Update list of employees
                 this.getEmployees()
+
+                // Hide modal
                 window.$('#deleteModal').modal('hide')
+
+                // Show alert
                 window.$('#alert').addClass('show')
 
+                // Timeout to hide alert
                 this.timeout = setTimeout(() => {
                     window.$('#alert').removeClass('show')
                 }, 2000)
@@ -141,7 +153,7 @@ export class Employees extends Component {
                     delete={this.delete} 
                     filter={this.filter}
                     loading={this.state.is_loading} />
-                <ConfirmModal id="deleteModal" employee_id={this.state.delete_employee_id} title="Delete Employee" description={`Are you sure you want to delete employee ${this.state.delete_employee_id}?`} delete={this.deleteEmployee} />
+                <ConfirmModal id="deleteModal" value={this.state.delete_employee_id} title="Delete Employee" description={`Are you sure you want to delete employee ${this.state.delete_employee_id}?`} click={this.deleteEmployee} />
                 <div id="alert" className="alert alert-success alert-dismissible fade" role="alert" style={alertStyle}>
                     <strong>Success!</strong>
                     <button type="button" className="close" data-dismiss="alert" aria-label="Close">

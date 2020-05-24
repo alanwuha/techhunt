@@ -8,9 +8,9 @@ export class Pagination extends Component {
     // Compute limit
     getLimit() {
         if(this.props.params.offset + this.props.params.limit - 1 < this.props.data.count) {
-            return this.props.params.offset + this.props.params.limit - 1
+            return this.props.params.offset + this.props.params.limit
         } else {
-            return this.props.data.count - 1
+            return this.props.data.count
         }
     }
 
@@ -28,7 +28,7 @@ export class Pagination extends Component {
                 <button type="button" id={this.props.data.previous_offset} onClick={this.click} style={this.getBtnStyle(this.props.data.previous_offset)}>
                     <i id={this.props.data.previous_offset} className="fa fa-chevron-left" />
                 </button>
-                <span className="mx-3" style={spanStyle}>Showing {this.props.params.offset} to {this.getLimit()} of {this.props.data.count} records</span>
+                <span className="mx-3" style={spanStyle}>Showing {this.props.params.offset + 1} to {this.getLimit()} of {this.props.data.count} records</span>
                 <button type="button" id={this.props.data.next_offset} onClick={this.click} style={this.getBtnStyle(this.props.data.next_offset)}>
                     <i id={this.props.data.next_offset} className="fa fa-chevron-right" />
                 </button>

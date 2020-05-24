@@ -16,7 +16,7 @@ export default function ConfirmModal(props) {
                 </div>
                 <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button id={props.employee_id} type="button" className="btn btn-primary" onClick={props.delete}>Yes</button>
+                    <button value={props.value} type="button" className="btn btn-primary" onClick={props.click}>Yes</button>
                 </div>
                 </div>
             </div>
