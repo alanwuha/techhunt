@@ -18,7 +18,7 @@ export class Employees extends Component {
             },
             params: {
                 minSalary: 0,
-                maxSalary: 4000,
+                maxSalary: 100000,
                 offset: 0,
                 limit: 30,
                 sort: '+id',

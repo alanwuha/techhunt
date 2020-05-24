@@ -27,6 +27,9 @@ const ulStyle = {
 
 const imgStyle = {
     color: '#666',
+    backgroundColor: '#fff',
+    padding: '5px',
+    borderRadius: '75px',
 }
 
 const iconStyle = {
