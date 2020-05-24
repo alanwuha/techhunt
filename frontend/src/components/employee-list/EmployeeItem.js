@@ -11,8 +11,8 @@ export default function EmployeeItem(props) {
             <li className="flex-fill">{props.employee.login}</li>
             <li className="flex-fill">{props.employee.salary}</li>
             <li className="flex-shrink-1">
-                <i className="btn btn-sm fa fa-pencil" style={iconStyle} />
-                <i className="btn btn-sm fa fa-trash" style={iconStyle} />
+                <i type="button" id={props.employee.id} onClick={props.edit} className="btn btn-sm fa fa-pencil" style={iconStyle} />
+                <i type="button" id={props.employee.id} onClick={props.delete} className="btn btn-sm fa fa-trash" style={iconStyle} />
             </li>
         </ul>
     )

@@ -8,13 +8,18 @@ export class Employees extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            employees: [],
+            data: {
+                count: 0,
+                nextOffset: null,
+                previousOffset: null,
+                results: [],
+            },
             params: {
-                'minSalary': 0,
-                'maxSalary': 4000,
-                'offset': 0,
-                'limit': 30,
-                'sort': '+id',
+                minSalary: 0,
+                maxSalary: 4000,
+                offset: 0,
+                limit: 30,
+                sort: '+id',
             },
         }
     }
@@ -58,7 +63,7 @@ export class Employees extends Component {
             .then(res => {
                 this.setState({
                     is_loading: false,
-                    employees: res.data.results
+                    data: res.data
                 })
             })
     }
@@ -91,11 +96,21 @@ export class Employees extends Component {
         })
     }
 
+    edit = (e) => {
+        e.preventDefault()
+        console.log('edit', e.target.id)
+    }
+
+    delete = (e) => {
+        e.preventDefault()
+        console.log('delete', e.target.id)
+    }
+
     render() {
         return (
             <div className="container" style={divStyle}>
                 <SalaryFilter filter={this.filter} params={this.state.params} />
-                <EmployeeList employees={this.state.employees} sort={this.sort} loading={this.state.is_loading} />
+                <EmployeeList data={this.state.data} params={this.state.params} sort={this.sort} edit={this.edit} delete={this.delete} loading={this.state.is_loading} />
             </div>
         )
     }

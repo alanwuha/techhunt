@@ -69,7 +69,7 @@ const titleStyle = {
     fontSize: '0.65rem',
     fontWeight: '600',
     padding: '5px 20px',
-    minWidth: '120px',
+    minWidth: '130px',
 }
 
 const salaryStyle = {

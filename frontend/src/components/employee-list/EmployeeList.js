@@ -2,9 +2,8 @@ import React from 'react'
 import EmployeeItem from './EmployeeItem'
 
 export default function EmployeeList(props) {
-    let showLoading
-
     // Show spinner while waiting for response from API
+    let showLoading
     if(props.is_loading) {
         showLoading = (
             <div className="d-flex justify-content-center mb-5">
@@ -15,9 +14,12 @@ export default function EmployeeList(props) {
         )
     }
 
+    // Compute limit
+    const limit = ((props.params.offset + props.params.limit) < props.data.count) ? (props.params.offset + props.params.limit) : props.data.count
+
     return (
         <div>
-            <p style={pStyle}>{props.employees.length} employees found</p>
+            <p style={pStyle}>Showing {props.params.offset} to {limit} of {props.data.count} records</p>
             <h4 style={h4Style}>Employees</h4>
             {showLoading}
             <ul style={ulStyle} className="d-none d-sm-flex">
@@ -37,8 +39,8 @@ export default function EmployeeList(props) {
                 <li className="flex-shrink-1">Action</li>
             </ul>
             {
-                props.employees.map(e => {
-                    return <EmployeeItem key={e.id} employee={e} />
+                props.data.results.map(e => {
+                    return <EmployeeItem key={e.id} employee={e} edit={props.edit} delete={props.delete} />
                 })
             }
         </div>
