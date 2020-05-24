@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
 
 export class Pagination extends Component {
-    constructor(props) {
-        super(props)
-    }
-
+    
     // Compute limit
     getLimit() {
         if(this.props.params.offset + this.props.params.limit - 1 < this.props.data.count) {

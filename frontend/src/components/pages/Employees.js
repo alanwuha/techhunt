@@ -4,6 +4,8 @@ import EmployeeList from '../employee-list/EmployeeList'
 import axios from 'axios'
 import queryString from 'query-string'
 import ConfirmModal from '../modals/ConfirmModal'
+import EditModal from '../modals/EditModal'
+import Alert from '../alerts/Alert'
 
 export class Employees extends Component {
     constructor(props) {
@@ -102,20 +104,39 @@ export class Employees extends Component {
 
     edit = (e) => {
         e.preventDefault()
-        console.log('edit', e.target.id)
+
+        // Show edit modal
+        window.$('#editModal').modal('show')
     }
 
     delete = (e) => {
         e.preventDefault()
         
         // Update delete_employee_id
-        const id = e.target.id
         this.setState({
             delete_employee_id: e.target.id
         })
 
         // Show delete modal
         window.$('#deleteModal').modal('show')
+    }
+
+    editEmployee = (e) => {
+        e.preventDefault()
+        console.log('editEmployee')
+
+        // PATCH
+        // axios.patch(`http://localhost:8000/users/`)
+        //     .then(res => {
+        //         // Update list of employees
+        //         this.getEmployees()
+
+        //         // Hide modal
+        //         window.$('#editModal').modal('hide')
+
+        //         // Show alert
+        //         this.showAlert()
+        //     })
     }
 
     deleteEmployee = (e) => {
@@ -125,6 +146,7 @@ export class Employees extends Component {
         const value = e.target.value
         axios.delete(`http://localhost:8000/users/${value}`)
             .then(res => {
+                console.log(res.status)
                 // Update list of employees
                 this.getEmployees()
 
@@ -132,19 +154,26 @@ export class Employees extends Component {
                 window.$('#deleteModal').modal('hide')
 
                 // Show alert
-                window.$('#alert').addClass('show')
-
-                // Timeout to hide alert
-                this.timeout = setTimeout(() => {
-                    window.$('#alert').removeClass('show')
-                }, 2000)
+                this.showAlert()
             })
+    }
+
+    showAlert() {
+        // Show alert
+        window.$('#alert').addClass('show')
+
+        // Timeout to hide alert
+        this.timeout = setTimeout(() => {
+            window.$('#alert').removeClass('show')
+        }, 2000)
     }
 
     render() {
         return (
             <div className="container" style={divStyle}>
+
                 <SalaryFilter filter={this.filter} params={this.state.params} />
+
                 <EmployeeList 
                     data={this.state.data} 
                     params={this.state.params} 
@@ -153,13 +182,20 @@ export class Employees extends Component {
                     delete={this.delete} 
                     filter={this.filter}
                     loading={this.state.is_loading} />
-                <ConfirmModal id="deleteModal" value={this.state.delete_employee_id} title="Delete Employee" description={`Are you sure you want to delete employee ${this.state.delete_employee_id}?`} click={this.deleteEmployee} />
-                <div id="alert" className="alert alert-success alert-dismissible fade" role="alert" style={alertStyle}>
-                    <strong>Success!</strong>
-                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+
+                <ConfirmModal 
+                    id="deleteModal" 
+                    value={this.state.delete_employee_id} 
+                    title="Delete Employee" 
+                    description={`Are you sure you want to delete employee ${this.state.delete_employee_id}?`} 
+                    click={this.deleteEmployee} />
+
+                <EditModal 
+                    id="editModal" 
+                    click={this.editEmployee} />
+
+                <Alert status="success" displayText="Success!" />
+
             </div>
         )
     }
@@ -167,12 +203,6 @@ export class Employees extends Component {
 
 const divStyle = {
     padding: '30px 20px',
-}
-
-const alertStyle = {
-    position: 'fixed',
-    bottom: '10px',
-    right: '20px',
 }
 
 export default Employees

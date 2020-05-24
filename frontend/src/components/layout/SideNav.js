@@ -9,16 +9,10 @@ export default function SideNav() {
                 <h4 style={usernameStyle}>Long user name</h4>
                 <ul className="nav flex-column">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Employees</Link>
+                        <Link className="nav-link" to="/" style={linkStyle}>Employees</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Function</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/">Function</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/">Function</Link>
+                        <Link className="nav-link" to="/upload" style={linkStyle}>Upload</Link>
                     </li>
                 </ul>
             </div>
@@ -41,11 +35,15 @@ const imgStyle = {
     width: '100px',
     height: '100px',
     backgroundColor: '#999',
-    marginBottom: '20px',
+    marginBottom: '30px',
 }
 
 const usernameStyle = {
     fontSize: '1rem',
     fontWeight: '600',
     marginBottom: '50px',
+}
+
+const linkStyle = {
+    color: '#fff'
 }
