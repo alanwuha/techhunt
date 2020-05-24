@@ -106,6 +106,7 @@ export class Upload extends Component {
 const h4Style = {
     fontWeight: '600',
     marginBottom: '30px',
+    fontSize: '1.1rem',
 }
 
 export default Upload
