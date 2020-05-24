@@ -8,10 +8,11 @@ export class Employees extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            is_loading: true,
             data: {
                 count: 0,
-                nextOffset: null,
-                previousOffset: null,
+                next_offset: null,
+                previous_offset: null,
                 results: [],
             },
             params: {
@@ -26,12 +27,6 @@ export class Employees extends Component {
 
     componentDidMount() {
         this.getEmployees()
-
-        // Get param values from url and update state
-        let values = queryString.parse(this.props.location.search, {arrayFormat: 'comma', parseNumbers: true})
-        this.setState({
-            params: values
-        })
     }
 
     componentDidUpdate(prevProps) {
@@ -58,6 +53,12 @@ export class Employees extends Component {
         }
         query = query.replace('%2B', '+')
 
+        // Update state
+        let values = queryString.parse(this.props.location.search, {arrayFormat: 'comma', parseNumbers: true})
+        this.setState({
+            params: values
+        })
+
         // API call
         axios.get(`http://localhost:8000/users/${query}`)
             .then(res => {
@@ -68,9 +69,17 @@ export class Employees extends Component {
             })
     }
 
+    // Generic filter function for all fields except sort
     filter = (param, value) => {
-        let query = queryString.parse(this.props.location.search, {arrayFormat: 'comma'})
+        let query = queryString.parse(this.props.location.search, {arrayFormat: 'comma', parseNumbers: true})
         query[param] = value
+
+        // Update state
+        let params = {...this.state.params}
+        params[param] = parseInt(value)
+        this.setState({
+            params: params
+        })
 
         // Replace url with new param values
         this.props.history.replace({
@@ -81,7 +90,7 @@ export class Employees extends Component {
     sort = (e) => {
         e.preventDefault()
 
-        let query = queryString.parse(this.props.location.search, {arrayFormat: 'comma'})
+        let query = queryString.parse(this.props.location.search, {arrayFormat: 'comma', parseNumbers: true})
         
         // Replace sort value in query
         if(query.sort.replace('+', '').replace(' ', '') === e.target.id) {
@@ -110,7 +119,14 @@ export class Employees extends Component {
         return (
             <div className="container" style={divStyle}>
                 <SalaryFilter filter={this.filter} params={this.state.params} />
-                <EmployeeList data={this.state.data} params={this.state.params} sort={this.sort} edit={this.edit} delete={this.delete} loading={this.state.is_loading} />
+                <EmployeeList 
+                    data={this.state.data} 
+                    params={this.state.params} 
+                    sort={this.sort} 
+                    edit={this.edit} 
+                    delete={this.delete} 
+                    filter={this.filter}
+                    loading={this.state.is_loading} />
             </div>
         )
     }

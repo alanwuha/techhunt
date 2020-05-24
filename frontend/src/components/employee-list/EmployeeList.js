@@ -1,5 +1,6 @@
 import React from 'react'
 import EmployeeItem from './EmployeeItem'
+import Pagination from './Pagination'
 
 export default function EmployeeList(props) {
     // Show spinner while waiting for response from API
@@ -14,13 +15,14 @@ export default function EmployeeList(props) {
         )
     }
 
-    // Compute limit
-    const limit = ((props.params.offset + props.params.limit - 1) < props.data.count) ? (props.params.offset + props.params.limit - 1) : props.data.count - 1
-
     return (
         <div>
-            <p style={pStyle}>Showing {props.params.offset} to {limit} of {props.data.count} records</p>
-            <h4 style={h4Style}>Employees</h4>
+            <div className="d-flex flex-column flex-sm-row">
+                <div><h4 style={h4Style}>Employees</h4></div>
+                <div className="ml-auto mb-3">
+                    <Pagination  data={props.data} params={props.params} filter={props.filter} />
+                </div>
+            </div>
             {showLoading}
             <ul style={ulStyle} className="d-none d-sm-flex">
                 <li className="flex-shrink-1 mr-5">&nbsp;</li>
@@ -43,12 +45,13 @@ export default function EmployeeList(props) {
                     return <EmployeeItem key={e.id} employee={e} edit={props.edit} delete={props.delete} />
                 })
             }
+            <div className="d-flex">
+                <div className="mx-auto">
+                    <Pagination  data={props.data} params={props.params} filter={props.filter} />
+                </div>
+            </div>
         </div>
     )
-}
-
-const pStyle = {
-    float: 'right',
 }
 
 const h4Style = {
