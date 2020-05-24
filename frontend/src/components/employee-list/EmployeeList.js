@@ -7,7 +7,7 @@ export default function EmployeeList(props) {
     let showLoading
     if(props.loading) {
         showLoading = (
-            <div className="d-flex justify-content-center mb-5">
+            <div className="d-flex justify-content-center">
                 <div className="spinner-border spinner-border-sm" role="status">
                     <span className="sr-only">Loading...</span>
                 </div>
@@ -46,6 +46,7 @@ export default function EmployeeList(props) {
                 })
             }
             <div className="d-flex">
+                {showLoading}
                 <div className="mx-auto">
                     <Pagination  data={props.data} params={props.params} filter={props.filter} />
                 </div>

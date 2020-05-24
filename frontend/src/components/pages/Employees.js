@@ -74,13 +74,6 @@ export class Employees extends Component {
         let query = queryString.parse(this.props.location.search, {arrayFormat: 'comma', parseNumbers: true})
         query[param] = value
 
-        // Update state
-        let params = {...this.state.params}
-        params[param] = parseInt(value)
-        this.setState({
-            params: params
-        })
-
         // Replace url with new param values
         this.props.history.replace({
             search: queryString.stringify(query, {arrayFormat: 'comma'})
