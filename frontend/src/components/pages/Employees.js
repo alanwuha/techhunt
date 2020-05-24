@@ -25,7 +25,7 @@ export class Employees extends Component {
                 limit: 30,
                 sort: '+id',
             },
-            delete_employee_id: null,
+            delete_employee_id: '',
         }
     }
 
@@ -105,6 +105,16 @@ export class Employees extends Component {
     edit = (e) => {
         e.preventDefault()
 
+        // Get employee
+        const id = e.target.id
+        const employee = this.state.data.results.find(e => e.id === id)
+
+        // Update form values
+        document.getElementById('edit_employee_id').value = employee.id
+        document.getElementById('edit_employee_login').value = employee.login
+        document.getElementById('edit_employee_name').value = employee.name
+        document.getElementById('edit_employee_salary').value = employee.salary
+
         // Show edit modal
         window.$('#editModal').modal('show')
     }
@@ -121,22 +131,19 @@ export class Employees extends Component {
         window.$('#deleteModal').modal('show')
     }
 
-    editEmployee = (e) => {
-        e.preventDefault()
-        console.log('editEmployee')
-
+    editEmployee = (employee) => {
         // PATCH
-        // axios.patch(`http://localhost:8000/users/`)
-        //     .then(res => {
-        //         // Update list of employees
-        //         this.getEmployees()
+        axios.patch(`http://localhost:8000/users/${employee.id}/`, employee)
+            .then(res => {
+                // Update list of employees
+                this.getEmployees()
 
-        //         // Hide modal
-        //         window.$('#editModal').modal('hide')
+                // Hide modal
+                window.$('#editModal').modal('hide')
 
-        //         // Show alert
-        //         this.showAlert()
-        //     })
+                // Show alert
+                this.showAlert()
+            })
     }
 
     deleteEmployee = (e) => {
@@ -180,7 +187,7 @@ export class Employees extends Component {
                     sort={this.sort} 
                     edit={this.edit} 
                     delete={this.delete} 
-                    filter={this.filter}
+                    filter={this.filter} 
                     loading={this.state.is_loading} />
 
                 <ConfirmModal 
