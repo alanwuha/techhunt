@@ -3,6 +3,7 @@ import SalaryFilter from '../salary-filter/SalaryFilter'
 import EmployeeList from '../employee-list/EmployeeList'
 import axios from 'axios'
 import queryString from 'query-string'
+import ConfirmModal from '../modals/ConfirmModal'
 
 export class Employees extends Component {
     constructor(props) {
@@ -22,6 +23,7 @@ export class Employees extends Component {
                 limit: 30,
                 sort: '+id',
             },
+            delete_employee_id: null,
         }
     }
 
@@ -105,7 +107,26 @@ export class Employees extends Component {
 
     delete = (e) => {
         e.preventDefault()
-        console.log('delete', e.target.id)
+        const id = e.target.id
+        this.setState({
+            delete_employee_id: e.target.id
+        })
+        window.$('#deleteModal').modal('show')
+    }
+
+    deleteEmployee = (e) => {
+        e.preventDefault()
+        const id = e.target.id
+        axios.delete(`http://localhost:8000/users/${id}`)
+            .then(res => {
+                this.getEmployees()
+                window.$('#deleteModal').modal('hide')
+                window.$('#alert').addClass('show')
+
+                this.timeout = setTimeout(() => {
+                    window.$('#alert').removeClass('show')
+                }, 2000)
+            })
     }
 
     render() {
@@ -120,6 +141,13 @@ export class Employees extends Component {
                     delete={this.delete} 
                     filter={this.filter}
                     loading={this.state.is_loading} />
+                <ConfirmModal id="deleteModal" employee_id={this.state.delete_employee_id} title="Delete Employee" description={`Are you sure you want to delete employee ${this.state.delete_employee_id}?`} delete={this.deleteEmployee} />
+                <div id="alert" className="alert alert-success alert-dismissible fade" role="alert" style={alertStyle}>
+                    <strong>Success!</strong>
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             </div>
         )
     }
@@ -127,6 +155,12 @@ export class Employees extends Component {
 
 const divStyle = {
     padding: '30px 20px',
+}
+
+const alertStyle = {
+    position: 'fixed',
+    bottom: '10px',
+    right: '20px',
 }
 
 export default Employees
