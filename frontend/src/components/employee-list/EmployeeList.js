@@ -5,10 +5,10 @@ import Pagination from './Pagination'
 export default function EmployeeList(props) {
     // Show spinner while waiting for response from API
     let showLoading
-    if(props.is_loading) {
+    if(props.loading) {
         showLoading = (
             <div className="d-flex justify-content-center mb-5">
-                <div className="spinner-border" role="status">
+                <div className="spinner-border spinner-border-sm" role="status">
                     <span className="sr-only">Loading...</span>
                 </div>
             </div>
@@ -18,12 +18,12 @@ export default function EmployeeList(props) {
     return (
         <div>
             <div className="d-flex flex-column flex-sm-row">
-                <div><h4 style={h4Style}>Employees</h4></div>
+                <h4 style={h4Style}>Employees</h4>
+                <div className="ml-3">{showLoading}</div>
                 <div className="ml-auto mb-3">
                     <Pagination  data={props.data} params={props.params} filter={props.filter} />
                 </div>
             </div>
-            {showLoading}
             <ul style={ulStyle} className="d-none d-sm-flex">
                 <li className="flex-shrink-1 mr-5">&nbsp;</li>
                 <li className="flex-fill">
