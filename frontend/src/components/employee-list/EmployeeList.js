@@ -15,7 +15,7 @@ export default function EmployeeList(props) {
     }
 
     // Compute limit
-    const limit = ((props.params.offset + props.params.limit - 1) < props.data.count) ? (props.params.offset + props.params.limit - 1) : props.data.count
+    const limit = ((props.params.offset + props.params.limit - 1) < props.data.count) ? (props.params.offset + props.params.limit - 1) : props.data.count - 1
 
     return (
         <div>
