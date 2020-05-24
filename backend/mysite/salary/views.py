@@ -87,11 +87,11 @@ def employee(request):
             'count': count,
             'next_offset': nextOffset,
             'previous_offset': previousOffset,
+            'limit': limit,
             'results': serializer.data,
         }
 
         return Response(response)
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
-
 
