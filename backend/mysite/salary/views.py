@@ -95,3 +95,38 @@ def employee(request):
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET', 'POST', 'PATCH', 'DELETE'])
+def employee_detail(request, pk):
+    """
+    Retrieve, update or delete an employee.
+    """
+    if request.method == 'POST':
+        try:
+            employee = Employee(request.data)
+            serializer = EmployeeSerializer(employee, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+    else:
+        try:
+            employee = Employee.objects.get(pk=pk)
+        except Employee.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        if request.method == 'GET':
+            serializer = EmployeeSerializer(employee)
+            return Response(serializer.data)
+
+        elif request.method == 'PATCH':
+            serializer = EmployeeSerializer(employee, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        elif request.method == 'DELETE':
+            employee.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
