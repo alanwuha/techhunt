@@ -61,7 +61,7 @@ export class CreateEmployee extends Component {
                         <input type="text" className="form-control" id="create_employee_salary" />
                     </div>
                 </form>
-                <button type="button" className="btn btn-primary" onClick={this.click}>Save</button>
+                <button type="button" className="btn btn-sm btn-primary" onClick={this.click}>Save</button>
             </div>
         )
     }
