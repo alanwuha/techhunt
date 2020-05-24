@@ -5,7 +5,7 @@ import Employees from './components/pages/Employees'
 import Upload from './components/pages/Upload'
 import CreateEmployee from './components/pages/CreateEmployee'
 import SideNav from './components/layout/SideNav'
-import Alert from './components/alerts/Alert'
+import Alert from './components/alert/Alert'
 
 import './App.css';
 

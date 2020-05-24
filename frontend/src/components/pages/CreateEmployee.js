@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ShowAlert from '../alert/ShowAlert'
 
 export class CreateEmployee extends Component {
 
@@ -15,21 +16,11 @@ export class CreateEmployee extends Component {
 
         axios.post(`http://localhost:8000/users/${employee.id}/`, employee)
             .then(res => {
-                this.showAlert('success')
+                ShowAlert('success', 'Employee created!')
                 this.clearForm()
             }, err => {
-                this.showAlert('danger')
+                ShowAlert('danger', 'Error occurred.')
             })
-    }
-
-    showAlert(status) {
-        // Show alert
-        window.$(`#alert-${status}`).addClass('show')
-
-        // Timeout to hide alert
-        this.timeout = setTimeout(() => {
-            window.$(`#alert-${status}`).removeClass('show')
-        }, 2000)
     }
 
     clearForm() {

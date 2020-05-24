@@ -5,7 +5,7 @@ import axios from 'axios'
 import queryString from 'query-string'
 import ConfirmModal from '../modals/ConfirmModal'
 import EditModal from '../modals/EditModal'
-import Alert from '../alerts/Alert'
+import ShowAlert from '../alert/ShowAlert'
 
 export class Employees extends Component {
     constructor(props) {
@@ -142,7 +142,10 @@ export class Employees extends Component {
                 window.$('#editModal').modal('hide')
 
                 // Show alert
-                this.showAlert()
+                ShowAlert('success', 'Employee updated!')
+            }, err => {
+                // Show alert
+                ShowAlert('danger', 'Error occurred.')
             })
     }
 
@@ -153,7 +156,6 @@ export class Employees extends Component {
         const value = e.target.value
         axios.delete(`http://localhost:8000/users/${value}`)
             .then(res => {
-                console.log(res.status)
                 // Update list of employees
                 this.getEmployees()
 
@@ -161,18 +163,11 @@ export class Employees extends Component {
                 window.$('#deleteModal').modal('hide')
 
                 // Show alert
-                this.showAlert('success')
+                ShowAlert('success', 'Employee deleted!')
+            }, err => {
+                // Show alert
+                ShowAlert('danger', 'Error occurred.')
             })
-    }
-
-    showAlert(status) {
-        // Show alert
-        window.$(`#alert-${status}`).addClass('show')
-
-        // Timeout to hide alert
-        this.timeout = setTimeout(() => {
-            window.$(`#alert-${status}`).removeClass('show')
-        }, 2000)
     }
 
     render() {

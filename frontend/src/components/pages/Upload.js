@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import bsCustomFileInput from 'bs-custom-file-input'
 import axios, {post} from 'axios'
+import ShowAlert from '../alert/ShowAlert'
 
 export class Upload extends Component {
     constructor(props) {
@@ -31,12 +32,12 @@ export class Upload extends Component {
                     file: null,
                     is_loading: false,
                 })
-                this.showAlert('success')
+                ShowAlert('success', 'File uploaded!')
             }, err => {
                 this.setState({
                     is_loading: false,
                 })
-                this.showAlert('danger')
+                ShowAlert('danger', 'Upload failed.')
             })
     }
 
@@ -56,16 +57,6 @@ export class Upload extends Component {
             }
         }
         return post(url, formData, config)
-    }
-
-    showAlert(status) {
-        // Show alert
-        window.$(`#alert-${status}`).addClass('show')
-
-        // Timeout to hide alert
-        this.timeout = setTimeout(() => {
-            window.$(`#alert-${status}`).removeClass('show')
-        }, 2000)
     }
 
     showLoading() {
