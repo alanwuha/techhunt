@@ -161,17 +161,17 @@ export class Employees extends Component {
                 window.$('#deleteModal').modal('hide')
 
                 // Show alert
-                this.showAlert()
+                this.showAlert('success')
             })
     }
 
-    showAlert() {
+    showAlert(status) {
         // Show alert
-        window.$('#alert').addClass('show')
+        window.$(`#alert-${status}`).addClass('show')
 
         // Timeout to hide alert
         this.timeout = setTimeout(() => {
-            window.$('#alert').removeClass('show')
+            window.$(`#alert-${status}`).removeClass('show')
         }, 2000)
     }
 
@@ -200,9 +200,7 @@ export class Employees extends Component {
                 <EditModal 
                     id="editModal" 
                     click={this.editEmployee} />
-
-                <Alert status="success" displayText="Success!" />
-
+                    
             </div>
         )
     }
