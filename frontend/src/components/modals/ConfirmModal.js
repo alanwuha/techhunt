@@ -15,11 +15,15 @@ export default function ConfirmModal(props) {
                     {props.description}
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button value={props.value} type="button" className="btn btn-primary" onClick={props.click}>Yes</button>
+                    <button value={props.value} style={btnStyle} type="button" className="btn btn-danger" onClick={props.click}>Delete</button>
                 </div>
                 </div>
             </div>
         </div>
     )
+}
+
+
+const btnStyle = {
+    width: '100%'
 }

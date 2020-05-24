@@ -47,8 +47,7 @@ export class EditModal extends Component {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-primary" onClick={this.click}>Update</button>
+                            <button type="button" style={saveBtnStyle} className="btn btn-primary" onClick={this.click}>Save</button>
                         </div>
                     </div>
                 </div>
@@ -57,5 +56,9 @@ export class EditModal extends Component {
     }
 }
 
+
+const saveBtnStyle = {
+    width: '100%'
+}
 
 export default EditModal
