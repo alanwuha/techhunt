@@ -4,11 +4,11 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Employees from './components/pages/Employees'
 import Upload from './components/pages/Upload'
 import CreateEmployee from './components/pages/CreateEmployee'
-import SideNav from './components/layout/SideNav'
+import SideNav from './components/nav/SideNav'
 import Alert from './components/alert/Alert'
 
 import './App.css';
-import MobileNav from './components/layout/MobileNav';
+import MobileNav from './components/nav/MobileNav';
 
 function App() {
   return (
