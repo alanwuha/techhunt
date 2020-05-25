@@ -42,7 +42,7 @@ export class EditModal extends Component {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="salary" className="col-form-label">Salary</label>
-                                    <input type="text" className="form-control" id="edit_employee_salary" />
+                                    <input type="number" min="0" className="form-control" id="edit_employee_salary" />
                                 </div>
                             </form>
                         </div>
