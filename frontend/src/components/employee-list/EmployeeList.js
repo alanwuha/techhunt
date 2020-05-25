@@ -20,7 +20,10 @@ export default function EmployeeList(props) {
             <div className="d-flex flex-column flex-sm-row">
                 <h4 style={h4Style}>Employees</h4>
                 <div className="ml-3">{showLoading}</div>
-                <div className="ml-auto mb-3">
+                <div className="ml-auto mb-3 d-none d-sm-block">
+                    <Pagination  data={props.data} params={props.params} filter={props.filter} />
+                </div>
+                <div className="mx-auto mb-3 d-sm-none">
                     <Pagination  data={props.data} params={props.params} filter={props.filter} />
                 </div>
             </div>
