@@ -18,15 +18,15 @@ function App() {
           <div className="col-md-3 col-lg-2 d-none d-md-block" style={navStyle}>
             <SideNav />
           </div>
-          <div className="col">
+          <div className="col pb-5">
             <MobileNav />
             <Route exact path="/" component={Employees} />
             <Route exact path="/upload" component={Upload} />
             <Route exact path="/create" component={CreateEmployee} />
           </div>
         </div>
-        <Alert />
       </div>
+      <Alert />
     </Router>
   );
 }
