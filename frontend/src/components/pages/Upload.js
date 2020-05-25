@@ -47,6 +47,7 @@ export class Upload extends Component {
                 }
             }, err => {
                 ShowAlert('danger', `There was an error in uploading your file.`)
+                document.querySelector('form').reset()
                 if(this._isMounted) {
                     this.setState({
                         is_loading: false,
