@@ -1,3 +1,4 @@
 env
 __pycache__
 static
+mysite/db.sqlite3
