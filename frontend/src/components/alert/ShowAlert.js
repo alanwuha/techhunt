@@ -4,7 +4,7 @@ export function ShowAlert(status, message) {
     document.getElementById('alert-display').innerHTML = message
 
     // Timeout to hide alert
-    let timeout = setTimeout(() => {
+    setTimeout(() => {
         window.$(`#alert`).removeClass('show')
     }, 2000)
 }

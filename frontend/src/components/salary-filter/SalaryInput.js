@@ -20,10 +20,20 @@ export class SalaryInput extends Component {
 
     // Perform filter only after user has stopped typing for some time
     onChange = (e) => {
-        const salary = e.target.value
+        let salary = e.target.value
         
         if(this.timeout) {
             clearTimeout(this.timeout)
+        }
+
+        if(this.props.param === 'minSalary') {
+            if(salary === null || salary === '') {
+                salary = 0
+            }
+        } else {
+            if(salary === null || salary === '') {
+                salary = 1000000
+            }
         }
 
         this.timeout = setTimeout(() => {

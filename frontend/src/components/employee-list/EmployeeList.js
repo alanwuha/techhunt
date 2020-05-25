@@ -7,19 +7,17 @@ export default function EmployeeList(props) {
     let showLoading
     if(props.loading) {
         showLoading = (
-            <div className="d-flex justify-content-center">
-                <div className="spinner-border spinner-border-sm" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
+            <div className="spinner-border spinner-border-sm" role="status">
+                <span className="sr-only">Loading...</span>
             </div>
         )
     }
 
     return (
         <div>
+
             <div className="d-flex flex-column flex-sm-row">
-                <h4 style={h4Style}>Employees</h4>
-                <div className="ml-3">{showLoading}</div>
+                <h4 style={h4Style}>Employees {showLoading}</h4>
                 <div className="ml-auto mb-3 d-none d-sm-block">
                     <Pagination  data={props.data} params={props.params} filter={props.filter} />
                 </div>
@@ -27,6 +25,7 @@ export default function EmployeeList(props) {
                     <Pagination  data={props.data} params={props.params} filter={props.filter} />
                 </div>
             </div>
+
             <ul style={ulStyle} className="d-none d-sm-flex">
                 <li className="flex-shrink-1 mr-5">&nbsp;</li>
                 <li className="flex-fill">
@@ -43,17 +42,20 @@ export default function EmployeeList(props) {
                 </li>
                 <li className="flex-shrink-1">Action</li>
             </ul>
+
             {
                 props.data.results.map(e => {
                     return <EmployeeItem key={e.id} employee={e} edit={props.edit} delete={props.delete} />
                 })
             }
+
             <div className="d-flex">
                 {showLoading}
                 <div className="mx-auto">
                     <Pagination  data={props.data} params={props.params} filter={props.filter} />
                 </div>
             </div>
+            
         </div>
     )
 }

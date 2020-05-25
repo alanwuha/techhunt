@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import bsCustomFileInput from 'bs-custom-file-input'
-import axios, {post} from 'axios'
+import {post} from 'axios'
 import ShowAlert from '../alert/ShowAlert'
 
 export class Upload extends Component {
+    _isMounted = false
+
     constructor(props) {
         super(props)
         this.state = {
@@ -17,6 +19,11 @@ export class Upload extends Component {
 
     componentDidMount = () => {
         bsCustomFileInput.init()
+        this._isMounted = true
+    }
+
+    componentWillUnmount = () => {
+        this._isMounted = false
     }
 
     onFormSubmit = (e) => {
@@ -32,15 +39,19 @@ export class Upload extends Component {
             .then(res => {
                 ShowAlert('success', `File ${this.state.file.name} was uploaded successfully.`)
                 document.querySelector('form').reset()
-                this.setState({
-                    file: null,
-                    is_loading: false,
-                })
+                if(this._isMounted) {
+                    this.setState({
+                        file: null,
+                        is_loading: false,
+                    })
+                }
             }, err => {
-                this.setState({
-                    is_loading: false,
-                })
                 ShowAlert('danger', `There was an error in uploading your file.`)
+                if(this._isMounted) {
+                    this.setState({
+                        is_loading: false,
+                    })
+                }
             })
     }
 
