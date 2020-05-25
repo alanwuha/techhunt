@@ -83,6 +83,11 @@ export class Employees extends Component {
         let query = queryString.parse(this.props.location.search, {arrayFormat: 'comma', parseNumbers: true})
         query[param] = value
 
+        // Reset to page 0 if param is not offset
+        if(param !== 'offset') {
+            query.offset = 0
+        }
+
         // Replace url with new param values
         this.props.history.replace({
             search: queryString.stringify(query, {arrayFormat: 'comma'})

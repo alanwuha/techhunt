@@ -19,7 +19,8 @@ def upload(request):
         try:
             # Extract rows from csv file
             decoded_string = next(request.FILES['file'].chunks()).decode('utf-8')
-            rows = [row.split(',') for row in decoded_string.split('\n') if row and row[0] != '#'][1:]
+            rows = [row for row in decoded_string.split('\n')][1:] # Skip first row
+            rows = [row.split(',') for row in rows if row and row[0] != '#'] # Skip empty or comment lines
 
             # Validate rows
             for row in rows:
