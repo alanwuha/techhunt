@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import { links } from './Links'
 
 export default function SideNav() {
     return (
@@ -8,14 +9,28 @@ export default function SideNav() {
                 <img alt="" style={imgStyle} />
                 <h4 style={usernameStyle}>Long user name</h4>
                 <ul className="nav flex-column">
+                    {
+                        links.map(link => {
+                            return (
+                                <li className="nav-item" key={link.to}>
+                                    <Link className="nav-link" to={link.to} style={linkStyle}>{link.displayText}</Link>
+                                </li>
+                            )
+                        })
+                    }
                     <li className="nav-item">
-                        <Link className="nav-link" to="/" style={linkStyle}>Employees</Link>
+                        <a style={linkStyle} 
+                            className="nav-link" 
+                            href="https://github.com/alanwuha/techhunt" 
+                            target="_blank" 
+                            rel="noopener noreferrer">GitHub</a>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/upload" style={linkStyle}>Upload</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/create" style={linkStyle}>Create</Link>
+                        <a style={linkStyle} 
+                            className="nav-link" 
+                            href="http://localhost:8000/users/?minSalary=0&maxSalary=1000000&offset=0&limit=30&sort=+id" 
+                            target="_blank" 
+                            rel="noopener noreferrer">API</a>
                     </li>
                 </ul>
             </div>

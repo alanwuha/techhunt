@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {links} from './Links'
 
 export default function MobileNav() {
     return (
@@ -16,14 +17,28 @@ export default function MobileNav() {
 
             <div className="collapse hide" id="nav">
                 <ul className="nav flex-column" style={ulStyle}>
+                    {
+                        links.map(link => {
+                            return (
+                                <li className="nav-item" style={liStyle} key={link.to} >
+                                    <Link style={linkStyle} className="nav-link" to={link.to}>{link.displayText}</Link>
+                                </li>
+                            )
+                        })
+                    }
                     <li className="nav-item" style={liStyle}>
-                        <Link style={aStyle} className="nav-link" to="/">Employees</Link>
+                        <a style={linkStyle} 
+                            className="nav-link" 
+                            href="https://github.com/alanwuha/techhunt" 
+                            target="_blank" 
+                            rel="noopener noreferrer">GitHub</a>
                     </li>
                     <li className="nav-item" style={liStyle}>
-                        <Link style={aStyle} className="nav-link" to="/upload">Upload</Link>
-                    </li>
-                    <li className="nav-item" style={liStyle}>
-                        <Link style={aStyle} className="nav-link" to="/create">Create</Link>
+                        <a style={linkStyle} 
+                            className="nav-link" 
+                            href="http://localhost:8000/users/?minSalary=0&maxSalary=1000000&offset=0&limit=30&sort=+id" 
+                            target="_blank" 
+                            rel="noopener noreferrer">API</a>
                     </li>
                 </ul>
             </div>
@@ -51,7 +66,7 @@ const liStyle = {
     backgroundColor: '#007fff'
 }
 
-const aStyle = {
+const linkStyle = {
     color: '#fff',
     fontWeight: '600'
 }
