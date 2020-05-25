@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-05-25T11:02:17.855Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="L-K0hDs7PwpgptVKdJJe" version="13.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-25T11:02:59.326Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="Z2uNE4uWJZkUAiPbDvmk" version="13.1.2" type="github">
   <diagram name="Page-1" id="5f0bae14-7c28-e335-631c-24af17079c00">
     <mxGraphModel dx="1422" dy="709" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
       <root>
@@ -8,7 +8,7 @@
           <mxGeometry y="520" width="1040" height="520" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-90" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;fontColor=#1A1A1A;align=center;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry width="760" height="440" as="geometry" />
+          <mxGeometry width="760" height="430" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-60" value="GCP Kubernetes Cluster" style="rounded=1;whiteSpace=wrap;html=1;horizontal=1;verticalAlign=top;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
           <mxGeometry x="280" y="680" width="400" height="285" as="geometry" />
@@ -17,7 +17,7 @@
           <mxGeometry x="310" y="715" width="340" height="220" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-28" value="Local machine" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="80" y="140" width="600" height="240" as="geometry" />
+          <mxGeometry x="80" y="120" width="600" height="240" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_Kyt0OvYF0EWUXwUrEQa-31" target="_Kyt0OvYF0EWUXwUrEQa-33">
           <mxGeometry relative="1" as="geometry" />
@@ -26,28 +26,28 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-33" value="Gunicorn + Django" style="rounded=0;whiteSpace=wrap;html=1;horizontal=1;verticalAlign=top;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="240" y="180" width="120" height="160" as="geometry" />
+          <mxGeometry x="240" y="160" width="120" height="160" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-34" value="API (Users)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="260" y="240" width="80" height="40" as="geometry" />
+          <mxGeometry x="260" y="220" width="80" height="40" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_Kyt0OvYF0EWUXwUrEQa-47" target="_Kyt0OvYF0EWUXwUrEQa-49">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-47" value="NodeJS Web App Server" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="400" y="180" width="120" height="160" as="geometry" />
+          <mxGeometry x="400" y="160" width="120" height="160" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-48" value="ReactJS&lt;br&gt;app" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
-          <mxGeometry x="420" y="240" width="80" height="40" as="geometry" />
+          <mxGeometry x="420" y="220" width="80" height="40" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-49" value="Browser" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="560" y="240" width="80" height="40" as="geometry" />
+          <mxGeometry x="560" y="220" width="80" height="40" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-31" value="SQLite&lt;br&gt;Database" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="120" y="180" width="80" height="80" as="geometry" />
+          <mxGeometry x="120" y="160" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-32" value="Employee:&lt;br&gt;- Id&lt;br&gt;- Login&lt;br&gt;- Name&lt;br&gt;- Salary" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="120" y="300" width="70" height="20" as="geometry" />
+          <mxGeometry x="120" y="280" width="70" height="20" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_Kyt0OvYF0EWUXwUrEQa-53" target="_Kyt0OvYF0EWUXwUrEQa-54">
           <mxGeometry relative="1" as="geometry">
@@ -118,16 +118,16 @@
           <mxGeometry x="500" y="905" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-80" value="PORT 3000" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#1A1A1A;" vertex="1" parent="1">
-          <mxGeometry x="400" y="340" width="120" height="30" as="geometry" />
+          <mxGeometry x="400" y="320" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-81" value="PORT 8000" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#1A1A1A;" vertex="1" parent="1">
-          <mxGeometry x="240" y="340" width="120" height="30" as="geometry" />
+          <mxGeometry x="240" y="320" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-86" value="PORT 5432" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#1A1A1A;" vertex="1" parent="1">
           <mxGeometry x="100" y="800" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-89" value="Django&lt;br&gt;static" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="260" y="290" width="80" height="40" as="geometry" />
+          <mxGeometry x="260" y="270" width="80" height="40" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-96" value="HOST X.X.X.X" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#1A1A1A;" vertex="1" parent="1">
           <mxGeometry x="80" y="920" width="160" height="30" as="geometry" />
@@ -136,7 +136,7 @@
           <mxGeometry x="280" y="965" width="400" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_Kyt0OvYF0EWUXwUrEQa-98" value="HOST 0.0.0.0" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#1A1A1A;" vertex="1" parent="1">
-          <mxGeometry x="80" y="380" width="600" height="30" as="geometry" />
+          <mxGeometry x="80" y="360" width="600" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
