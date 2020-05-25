@@ -70,6 +70,10 @@ def employee(request):
 
         # Count of total results
         count = len(employees)
+
+        # Limit to 30
+        if limit > 30:
+            raise Exception
         
         # Slice by offset and limit
         employees = employees[offset:offset+limit]
