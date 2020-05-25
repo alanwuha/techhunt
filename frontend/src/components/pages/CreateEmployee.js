@@ -16,10 +16,10 @@ export class CreateEmployee extends Component {
 
         axios.post(`http://localhost:8000/users/${employee.id}/`, employee)
             .then(res => {
-                ShowAlert('success', 'Employee created!')
+                ShowAlert('success', `Employee ${employee.id} has been created.`)
                 this.clearForm()
             }, err => {
-                ShowAlert('danger', 'Error occurred.')
+                ShowAlert('danger', 'There was an error in creating this employee.')
             })
     }
 

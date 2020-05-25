@@ -1,11 +1,11 @@
 export function ShowAlert(status, message) {
     // Show alert
-    window.$(`#alert-${status}`).addClass('show')
-    document.getElementById(`alert-display-${status}`).innerHTML = message
+    document.getElementById('alert').className = `alert alert-${status} fade show`
+    document.getElementById('alert-display').innerHTML = message
 
     // Timeout to hide alert
     let timeout = setTimeout(() => {
-        window.$(`#alert-${status}`).removeClass('show')
+        window.$(`#alert`).removeClass('show')
     }, 2000)
 }
 

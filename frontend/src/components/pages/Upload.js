@@ -21,23 +21,26 @@ export class Upload extends Component {
 
     onFormSubmit = (e) => {
         e.preventDefault()
+        
         this.setState({
             is_loading: true
         })
 
+        ShowAlert('warning', 'Your file is currently being processed.')
+
         this.fileUpload(this.state.file)
             .then(res => {
+                ShowAlert('success', `Your file ${this.state.file.name} has been successfully uploaded.`)
                 document.querySelector('form').reset()
                 this.setState({
                     file: null,
                     is_loading: false,
                 })
-                ShowAlert('success', 'File uploaded!')
             }, err => {
                 this.setState({
                     is_loading: false,
                 })
-                ShowAlert('danger', 'Upload failed.')
+                ShowAlert('danger', `There was an error in uploading your file.`)
             })
     }
 
@@ -81,7 +84,7 @@ export class Upload extends Component {
         return (
             <div className="container pt-5">
             <h4 style={h4Style}>Upload</h4>
-            <form onSubmit={this.onFormSubmit}>
+            <form onSubmit={this.onFormSubmit} method="post" encType="multipart/form-data">
                 <div className="custom-file mb-4">
                     <input type="file" className="custom-file-input" id="customFile" onChange={this.onChange} />
                     <label className="custom-file-label" htmlFor="customFile">Choose file...</label>

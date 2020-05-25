@@ -142,10 +142,10 @@ export class Employees extends Component {
                 window.$('#editModal').modal('hide')
 
                 // Show alert
-                ShowAlert('success', 'Employee updated!')
+                ShowAlert('success', `Employee ${employee.id} has been updated.`)
             }, err => {
                 // Show alert
-                ShowAlert('danger', 'Error occurred.')
+                ShowAlert('danger', 'There was an error in updating this employee.')
             })
     }
 
@@ -163,10 +163,10 @@ export class Employees extends Component {
                 window.$('#deleteModal').modal('hide')
 
                 // Show alert
-                ShowAlert('success', 'Employee deleted!')
+                ShowAlert('success', `Employee ${value} has been deleted.`)
             }, err => {
                 // Show alert
-                ShowAlert('danger', 'Error occurred.')
+                ShowAlert('danger', 'There was an error in deleting this employee.')
             })
     }
 

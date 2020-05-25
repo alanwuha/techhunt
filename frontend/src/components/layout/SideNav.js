@@ -5,7 +5,7 @@ export default function SideNav() {
     return (
         <div style={navStyle}>
             <div>
-                <img alt="" style={imgStyle}/>
+                <img alt="" style={imgStyle} />
                 <h4 style={usernameStyle}>Long user name</h4>
                 <ul className="nav flex-column">
                     <li className="nav-item">
@@ -24,9 +24,8 @@ export default function SideNav() {
 }
 
 const navStyle = {
-    backgroundColor: '#243a81',
     color: '#fff',
-    padding: '30px 40px',
+    padding: '30px 30px',
     position: 'fixed',
     top: '0',
     bottom: '0',
