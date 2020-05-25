@@ -49,7 +49,7 @@ export class CreateEmployee extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="salary" className="col-form-label">Salary</label>
-                        <input type="text" className="form-control" id="create_employee_salary" />
+                        <input type="number" min="0" className="form-control" id="create_employee_salary" />
                     </div>
                 </form>
                 <button type="button" className="btn btn-sm btn-primary" onClick={this.click}>Save</button>

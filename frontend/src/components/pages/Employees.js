@@ -70,6 +70,11 @@ export class Employees extends Component {
                     is_loading: false,
                     data: res.data
                 })
+            }, err => {
+                ShowAlert('danger', 'There was an error in fetching employees.')
+                this.setState({
+                    is_loading: false,
+                })
             })
     }
 

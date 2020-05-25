@@ -42,10 +42,9 @@ export class SalaryInput extends Component {
                 <div className="flex m-2"><b>$</b></div>
                 <div className="flex-fill">
                     <input 
-                        type="text"
+                        type="number"
+                        min="0"
                         style={inputStyle}
-                        // defaultValue={this.props.salary}
-                        // ref={(input) => this.input = input}
                         onChange={this.onChange} />
                 </div>
             </div>

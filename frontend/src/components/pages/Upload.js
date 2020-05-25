@@ -30,7 +30,7 @@ export class Upload extends Component {
 
         this.fileUpload(this.state.file)
             .then(res => {
-                ShowAlert('success', `Your file ${this.state.file.name} has been successfully uploaded.`)
+                ShowAlert('success', `File ${this.state.file.name} was uploaded successfully.`)
                 document.querySelector('form').reset()
                 this.setState({
                     file: null,
