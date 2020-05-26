@@ -19,7 +19,7 @@ class UploadCsvTestCase(TestCase):
                 form.add_file('file', filename, f, 'text/csv')
                 
                 # Data
-                data = bytes(form)
+                data = bytes(form)filename
                 
                 # Request
                 r = request.Request(self.url, data)
@@ -30,9 +30,7 @@ class UploadCsvTestCase(TestCase):
 
                 return response.status
         except:
-            pass
-
-        return None
+            return None
 
     def test_1_new_records(self):
         filename = 'test_1_new_records.csv'

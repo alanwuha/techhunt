@@ -7,7 +7,7 @@
 ~ $ git clone https://github.com/alanwuha/techhunt
 ```
 
-## 2 Install docker
+## 2 Install Docker
 ```
 ~ $ sudo apt install docker
 ```
@@ -146,6 +146,14 @@ User Story 4
 
 User Story 5
 - Not attempted
+
+# Test
+
+## Django
+Make sure that you have set up and activated a virtual env, and installed the required python packages using pip as per the steps under `Install Manually`
+```
+~ (env) techhunt/backend/mysite $ python manage.py test
+```
 
 # Notes
 
