@@ -1,6 +1,42 @@
 # Tech Hunt 2020
 
-# Installation Guide
+# Install using Docker (Recommended)
+
+## 1. Clone Git repository
+```
+~ $ git clone https://github.com/alanwuha/techhunt
+```
+
+## 2 Install docker
+```
+~ $ sudo apt install docker
+```
+
+## 3. Build Docker images
+```
+~ $ cd techhunt
+~ techhunt $ docker build -t techhunt_backend backend
+~ techhunt $ docker build -t techhunt_frontend frontend
+```
+
+## 4. Run Docker images
+On one command line interface window or tab, run:
+```
+~ techhunt $ docker run -p 8000:8000 techhunt_backend
+```
+_Note that nothing is printed after the command is executed, but it should be working!_
+
+
+On another command line interface window or tab, run:
+```
+~ techhunt $ docker run -p 3000:3000 techhunt_frontend
+```
+
+If successful, you should be able to access:
+- Backend : [http://localhost:8000/users/?minSalary=0&maxSalary=1000000&offset=0&limit=30&sort=+id](http://localhost:8000/users/?minSalary=0&maxSalary=1000000&offset=0&limit=30&sort=+id)
+- Frontend: [http://localhost:3000/](http://localhost:3000/)
+
+# Install Manually
 
 ## 1. Clone Git repository
 ```
