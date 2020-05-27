@@ -19,7 +19,7 @@ class UploadCsvTestCase(TestCase):
                 form.add_file('file', filename, f, 'text/csv')
                 
                 # Data
-                data = bytes(form)filename
+                data = bytes(form)
                 
                 # Request
                 r = request.Request(self.url, data)
