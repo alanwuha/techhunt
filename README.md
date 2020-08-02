@@ -1,4 +1,4 @@
-# Tech Hunt 2020
+# Employee Salary Management System 
 
 # Install using Docker (Recommended)
 
