@@ -1,5 +1,7 @@
 # Employee Salary Management System 
 
+![home.png](./diagrams/home.png)
+
 # Install using Docker (Recommended)
 
 ## 1. Clone Git repository
